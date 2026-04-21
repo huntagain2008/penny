@@ -430,7 +430,21 @@ body {
   background: #b06a4d;
 }
 
-@media (max-width: 480px) {
+.confirm-modal .confirm-message {
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #c04540;
+}
   .header-summary {
     flex-direction: column;
     gap: 12px;

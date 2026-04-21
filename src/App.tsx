@@ -7,6 +7,7 @@ import { Filters } from './components/Filters'
 import { TransactionList } from './components/TransactionList'
 import { FloatingActionButton } from './components/FloatingActionButton'
 import { TransactionModal } from './components/TransactionModal'
+import { ConfirmModal } from './components/ConfirmModal'
 import type { Transaction } from './types'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   const [filterCategory, setFilterCategory] = useState('all')
   const [showModal, setShowModal] = useState(false)
   const [editingTransaction, setEditingTransaction] = useState<Transaction | undefined>()
+  const [deleteId, setDeleteId] = useState<string | null>(null)
 
   const { grouped, totals } = useTransactions(filterMonth, filterCategory)
   const availableMonths = useAvailableMonths()
@@ -44,8 +46,13 @@ function App() {
   }
 
   const handleDelete = (id: string) => {
-    if (confirm('Delete this transaction?')) {
-      deleteTransaction(id)
+    setDeleteId(id)
+  }
+
+  const handleConfirmDelete = () => {
+    if (deleteId) {
+      deleteTransaction(deleteId)
+      setDeleteId(null)
     }
   }
 
@@ -89,6 +96,14 @@ function App() {
           transaction={editingTransaction}
           onClose={handleCloseModal}
           onSave={handleSave}
+        />
+      )}
+
+      {deleteId && (
+        <ConfirmModal
+          message="Delete this transaction?"
+          onConfirm={handleConfirmDelete}
+          onCancel={() => setDeleteId(null)}
         />
       )}
     </div>
