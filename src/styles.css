@@ -445,20 +445,20 @@ body {
 .btn-danger:hover {
   background: #c04540;
 }
-  .header-summary {
-    flex-direction: column;
-    gap: 12px;
-  }
 
-  .filters {
-    flex-direction: column;
-  }
+.header-summary {
+  flex-direction: column;
+  gap: 12px;
+}
 
-  .fab {
-    bottom: 24px;
-    right: 24px;
-    width: 56px;
-    height: 56px;
-    font-size: 1.75rem;
-  }
+.filters {
+  flex-direction: column;
+}
+
+.fab {
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  font-size: 1.75rem;
 }
