@@ -71,5 +71,3 @@ npm run build        # Production build
 ## Resources
 
 [Zod](https://zod.dev) | [Zustand](https://github.com/pmndrs/zustand) | [Vitest](https://vitest.dev) | [Playwright](https://playwright.dev)
-
-**Version**: 1.0.0 | **Updated**: 2026-04-18

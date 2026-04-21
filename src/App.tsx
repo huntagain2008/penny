@@ -13,7 +13,9 @@ import type { Transaction } from './types'
 function App() {
   const { transactions, addTransaction, updateTransaction, deleteTransaction } = useLedgerStore()
   const { currency, symbol, setCurrency } = useCurrency()
-  const [filterMonth, setFilterMonth] = useState(getMonthKey(new Date().toISOString()))
+  const now = new Date()
+  const currentMonth = getMonthKey(now.toISOString())
+  const [filterMonth, setFilterMonth] = useState(currentMonth)
   const [filterCategory, setFilterCategory] = useState('all')
   const [showModal, setShowModal] = useState(false)
   const [editingTransaction, setEditingTransaction] = useState<Transaction | undefined>()
@@ -22,7 +24,6 @@ function App() {
   const { grouped, totals } = useTransactions(filterMonth, filterCategory)
   const availableMonths = useAvailableMonths()
 
-  const currentMonth = getMonthKey(new Date().toISOString())
   const displayMonths =
     transactions.length > 0 && !availableMonths.includes(filterMonth)
       ? availableMonths.includes(currentMonth)
